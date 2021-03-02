@@ -17,4 +17,12 @@ ArithmeticResult[3]=$result3
 result4=$(($a%$b+$c))
 ArithmeticResult[4]=$result4
 
-echo ${ArithmeticResult[@]}
+i=0
+
+for temp in ${ArithmeticResult[@]}
+do
+	result[$i]=$temp
+	((i++))
+done
+
+echo ${result[@]}
