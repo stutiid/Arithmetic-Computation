@@ -25,11 +25,12 @@ do
 	((i++))
 done
 
-for ((i=0; i<3; i++))
+n=4-1
+for ((i=0; i<$n; i++))
 do
-	for ((j=0; j<3-i; j++))
+	for ((j=0; j<$n-$i; j++))
 	do
-		if [ ${result[$j]} -lt ${result[$j+1]} ]
+		if [ ${result[$j]} -gt ${result[$j+1]} ]
 		then
 			temp=${result[$j]}
 			result[$j]=${result[$j+1]}
