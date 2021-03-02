@@ -3,14 +3,18 @@
 echo "enter the numbers for arithmetic computation"
 read a b c
 
+declare -A ArithmeticResult
+
 result1=$(($a+$b*$c))
-echo $result1
+ArithmeticResult[1]=$result1
 
 result2=$(($a*$b+$c))
-echo $result2
+ArithmeticResult[2]=$result2
 
 result3=$(($a/$b+$c))
-echo $result3
+ArithmeticResult[3]=$result3
 
 result4=$(($a%$b+$c))
-echo $result4
+ArithmeticResult[4]=$result4
+
+echo ${ArithmeticResult[@]}
