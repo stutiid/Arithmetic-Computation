@@ -6,16 +6,16 @@ read a b c
 declare -A ArithmeticResult
 
 result1=$(($a+$b*$c))
-ArithmeticResult[1]=$result1
+ArithmeticResult[R1]=$result1
 
 result2=$(($a*$b+$c))
-ArithmeticResult[2]=$result2
+ArithmeticResult[R2]=$result2
 
 result3=$(($a/$b+$c))
-ArithmeticResult[3]=$result3
+ArithmeticResult[R3]=$result3
 
 result4=$(($a%$b+$c))
-ArithmeticResult[4]=$result4
+ArithmeticResult[R4]=$result4
 
 i=0
 
@@ -25,4 +25,16 @@ do
 	((i++))
 done
 
+for ((i=0; i<3; i++))
+do
+	for ((j=0; j<3-i; j++))
+	do
+		if [ ${result[$j]} -lt ${result[$j+1]} ]
+		then
+			temp=${result[$j]}
+			result[$j]=${result[$j+1]}
+			result[$j+1]=$temp
+		fi
+	done
+done
 echo ${result[@]}
